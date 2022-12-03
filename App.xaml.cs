@@ -1,8 +1,26 @@
-﻿namespace Tatar_Gabriela_Lab07_final;
+﻿using System;
+using Tatar_Gabriela_Lab07_final.Data;
+using System.IO;
+
+
+namespace Tatar_Gabriela_Lab07_final;
 
 public partial class App : Application
 {
-	public App()
+    static ShoppingListDatabase database;
+    public static ShoppingListDatabase Database
+    {
+        get
+        {
+            if (database == null)
+            {
+               database = new ShoppingListDatabase(Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "ShoppingList.db3"));
+            }
+            return database;
+        }
+    }
+
+    public App()
 	{
 		InitializeComponent();
 
